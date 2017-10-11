@@ -20,6 +20,8 @@ namespace ConexaoBD
             //SqlCommand cmdUpdate = new SqlCommand(queryUpdate, conexao);
             //cmdUpdate.ExecuteNonQuery();
 
+            
+
             Console.Write("Digite o nome do usuário: ");
             string nome = Console.ReadLine();
 
@@ -29,13 +31,17 @@ namespace ConexaoBD
             Console.Write("Digite a data de registro do usuário: ");
             string data = Console.ReadLine();
 
-            string queryInsert = string.Format("INSERT INTO Usuario (Nome, Cargo, Data) VALUES ('{0}', '{1}', '{2}')", nome, cargo, data);
-            bd.ExecutaComando(queryInsert);
+            //string queryInsert = string.Format("INSERT INTO Usuario (Nome, Cargo, Data) VALUES ('{0}', '{1}', '{2}')", nome, cargo, data);
+            //bd.ExecutaComando(queryInsert);
 
-            string querySelect = "SELECT * FROM Usuario";
-            SqlDataReader dados = bd.ExecutaComandoComRetorno(querySelect);
+            var app = new UsuarioAplicacao();
 
-            while (dados.Read())
+            app.Insert(nome, cargo, data);
+
+            //string querySelect = "SELECT * FROM Usuario";
+            SqlDataReader dados = app.Select();
+
+            foreach(var i in dados)
             {
                 Console.WriteLine("Id:{0}, Nome:{1}, Cargo:{2}, Data:{3}", dados["UsuarioId"], dados["Nome"], dados["Cargo"], dados["Data"]);
             }
