@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{76E5F157-67B2-454A-B118-1F3A61DB4D58}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{EFA3BA83-6CAA-47E8-A696-C30495DBA9CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConexaoBD</RootNamespace>
-    <AssemblyName>ConexaoBD</AssemblyName>
+    <RootNamespace>BDProjeto.Aplicacao</RootNamespace>
+    <AssemblyName>BDProjeto.Aplicacao</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,22 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioAplicacao.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BDProjeto.Aplicacao\BDProjeto.Aplicacao.csproj">
-      <Project>{EFA3BA83-6CAA-47E8-A696-C30495DBA9CE}</Project>
-      <Name>BDProjeto.Aplicacao</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BDProjeto.Dominio\BDProjeto.Dominio.csproj">
-      <Project>{BDBC35F7-B28C-4236-8C61-D08E91BB5BC8}</Project>
+      <Project>{bdbc35f7-b28c-4236-8c61-d08e91bb5bc8}</Project>
       <Name>BDProjeto.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BDProjeto.Repositorio\BDProjeto.Repositorio.csproj">
+      <Project>{fce1ed4a-2488-4a68-a15b-539c64b20a92}</Project>
+      <Name>BDProjeto.Repositorio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

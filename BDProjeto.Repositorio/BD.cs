@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConexaoBD
+namespace BDProjeto.Repositorio
 {
     public class BD : IDisposable
     {
@@ -39,7 +35,7 @@ namespace ConexaoBD
 
         public void Dispose()
         {
-            if(conexao.State == ConnectionState.Open)
+            if (conexao.State == ConnectionState.Open)
             {
                 conexao.Close();
             }

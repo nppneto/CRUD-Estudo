@@ -1,11 +1,10 @@
-﻿using System;
+﻿using BDProjeto.Dominio;
+using BDProjeto.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConexaoBD
+namespace BDProjeto.Aplicacao
 {
     public class UsuarioAplicacao
     {
