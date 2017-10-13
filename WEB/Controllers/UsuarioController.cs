@@ -13,7 +13,7 @@ namespace WEB.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            var appUsuario = new UsuarioAplicacao();
+            var appUsuario = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
             var listaUsuario = appUsuario.SelectAll();
             return View(listaUsuario);
         }
@@ -28,7 +28,7 @@ namespace WEB.Controllers
         {
             if(ModelState.IsValid)
             {
-                var appUsuario = new UsuarioAplicacao();
+                var appUsuario = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
                 appUsuario.Save(Usuario);
                 return RedirectToAction("Index");
             }
@@ -36,9 +36,9 @@ namespace WEB.Controllers
             return View(Usuario);
         }
 
-        public ActionResult Editar(int id)
+        public ActionResult Editar(string id)
         {
-            var appUsuario = new UsuarioAplicacao();
+            var appUsuario = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
             var usuario = appUsuario.SelectById(id);
 
             if(usuario == null)
@@ -52,7 +52,7 @@ namespace WEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appUsuario = new UsuarioAplicacao();
+                var appUsuario = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
                 appUsuario.Save(Usuario);
                 return RedirectToAction("Index");
             }
@@ -60,9 +60,9 @@ namespace WEB.Controllers
             return View(Usuario);
         }
 
-        public ActionResult Detalhes(int id)
+        public ActionResult Detalhes(string id)
         {
-            var appUsuario = new UsuarioAplicacao();
+            var appUsuario = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
             var usuario = appUsuario.SelectById(id);
 
             if (usuario == null)
@@ -71,9 +71,9 @@ namespace WEB.Controllers
             return View(usuario);
         }
 
-        public ActionResult Excluir(int id)
+        public ActionResult Excluir(string id)
         {
-            var appUsuario = new UsuarioAplicacao();
+            var appUsuario = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
             var usuario = appUsuario.SelectById(id);
 
             if (usuario == null)
@@ -83,10 +83,11 @@ namespace WEB.Controllers
         }
 
         [HttpPost, ActionName("Excluir")]
-        public ActionResult ExcluirConfirma(int id)
+        public ActionResult ExcluirConfirma(string id)
         {
-            var appUsuario = new UsuarioAplicacao();
-            appUsuario.Delete(id);
+            var appUsuario = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
+            var usuario = appUsuario.SelectById(id);
+            appUsuario.Delete(usuario);
             return RedirectToAction("Index");
         }
     }

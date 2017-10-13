@@ -1,101 +1,38 @@
 ﻿using BDProjeto.Dominio;
-using BDProjeto.Repositorio;
-using System;
+using BDProjeto.Dominio.Contrato;
+using BDProjeto.RepositorioADO;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
 
 namespace BDProjeto.Aplicacao
 {
     public class UsuarioAplicacao
     {
-        private BD bd;
+        private readonly IRepositorio<Usuario> repositorio;
 
-        private void Insert(Usuario Usuario)
+        public UsuarioAplicacao(IRepositorio<Usuario> repo)
         {
-            var strQuery = "";
-            strQuery += "INSERT INTO Usuario (Nome, Cargo, Data)";
-            strQuery += string.Format(" VALUES ('{0}', '{1}', '{2}')", Usuario.Nome, Usuario.Cargo, Usuario.Data);
-
-            using (bd = new BD())
-            {
-                bd.ExecutaComando(strQuery);
-            }
-        }
-
-        private void Update(Usuario Usuario)
-        {
-            var strQuery = "";
-            strQuery += "UPDATE Usuario SET ";
-            strQuery += string.Format("Nome = '{0}',", Usuario.Nome);
-            strQuery += string.Format("Cargo = '{0}',", Usuario.Cargo);
-            strQuery += string.Format("Data = '{0}'", Usuario.Data);
-            strQuery += string.Format("WHERE UsuarioId = '{0}' ", Usuario.Id);
-
-            using (bd = new BD())
-            {
-                bd.ExecutaComando(strQuery);
-            }
+            repositorio = repo;
         }
 
         public void Save(Usuario Usuario)
         {
-            if (Usuario.Id > 0)
-            {
-                Update(Usuario);
-            }
-            else
-                Insert(Usuario);
+            repositorio.Save(Usuario);
         }
 
-        public void Delete(int id)
+        public void Delete(Usuario usuario)
         {
-            using (bd = new BD())
-            {
-                var strQuery = string.Format("DELETE FROM Usuario WHERE UsuarioId = {0}", id);
-                bd.ExecutaComando(strQuery);
-            }
+            repositorio.Delete(usuario);
         }
 
-        public List<Usuario> SelectAll()
+        public IEnumerable<Usuario> SelectAll()
         {
-            using (bd = new BD())
-            {
-                var strQuery = "SELECT * FROM Usuario";
-                var retorno =  bd.ExecutaComandoComRetorno(strQuery);
-                return ListarUsuario(retorno);
-            }
+            return repositorio.SelectAll();
         }
 
-        public Usuario SelectById(int id)
+        public Usuario SelectById(string id)
         {
-            using (bd = new BD())
-            {
-                var strQuery = string.Format("SELECT * FROM Usuario WHERE UsuarioId = {0}", id);
-                var retorno = bd.ExecutaComandoComRetorno(strQuery);
-                return ListarUsuario(retorno).FirstOrDefault();
-            }
+            return repositorio.SelectById(id);
         }
 
-        private List<Usuario>ListarUsuario(SqlDataReader Reader)
-        {
-
-            var Usuario = new List<Usuario>();
-
-            while(Reader.Read())
-            {
-                var TempUsuario = new Usuario()
-                {
-                    Id = int.Parse(Reader["UsuarioId"].ToString()),
-                    Nome = Reader["Nome"].ToString(),
-                    Cargo = Reader["Cargo"].ToString(),
-                    Data = DateTime.Parse(Reader["Data"].ToString())
-                };
-
-                Usuario.Add(TempUsuario);
-            }
-            Reader.Close();
-            return Usuario;
-        }
     }
 }

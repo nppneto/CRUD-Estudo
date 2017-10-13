@@ -9,7 +9,7 @@ namespace DOS
     {
         static void Main(string[] args)
         {
-            var app = new UsuarioAplicacao();
+            var app = UsuarioAplicacaoConstrutor.UsuarioAplicacaoADO();
 
             SqlConnection conexao = new SqlConnection(@"Data Source=DESKTOP-PF66N0S\SQLEXPRESS;Initial Catalog=ExemploBD;User ID=sa;Password=codinome");
             conexao.Open();
