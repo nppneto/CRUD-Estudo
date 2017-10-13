@@ -3,7 +3,7 @@ using BDProjeto.Dominio;
 using System;
 using System.Data.SqlClient;
 
-namespace ConexaoBD
+namespace DOS
 {
     class Program
     {

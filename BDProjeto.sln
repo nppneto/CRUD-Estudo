@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConexaoBD", "ConexaoBD\ConexaoBD.csproj", "{76E5F157-67B2-454A-B118-1F3A61DB4D58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOS", "ConexaoBD\DOS.csproj", "{76E5F157-67B2-454A-B118-1F3A61DB4D58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDProjeto.Repositorio", "BDProjeto.Repositorio\BDProjeto.Repositorio.csproj", "{FCE1ED4A-2488-4A68-A15B-539C64B20A92}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDProjeto.Dominio", "BDProjeto.Dominio\BDProjeto.Dominio.csproj", "{BDBC35F7-B28C-4236-8C61-D08E91BB5BC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDProjeto.Aplicacao", "BDProjeto.Aplicacao\BDProjeto.Aplicacao.csproj", "{EFA3BA83-6CAA-47E8-A696-C30495DBA9CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEB", "WEB\WEB.csproj", "{9546ADB5-72C3-47CC-8772-4BCDC7B65F37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EFA3BA83-6CAA-47E8-A696-C30495DBA9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFA3BA83-6CAA-47E8-A696-C30495DBA9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFA3BA83-6CAA-47E8-A696-C30495DBA9CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9546ADB5-72C3-47CC-8772-4BCDC7B65F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9546ADB5-72C3-47CC-8772-4BCDC7B65F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9546ADB5-72C3-47CC-8772-4BCDC7B65F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9546ADB5-72C3-47CC-8772-4BCDC7B65F37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

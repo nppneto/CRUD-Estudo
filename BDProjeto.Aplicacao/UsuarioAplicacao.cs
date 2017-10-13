@@ -3,6 +3,7 @@ using BDProjeto.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace BDProjeto.Aplicacao
 {
@@ -63,6 +64,16 @@ namespace BDProjeto.Aplicacao
                 var strQuery = "SELECT * FROM Usuario";
                 var retorno =  bd.ExecutaComandoComRetorno(strQuery);
                 return ListarUsuario(retorno);
+            }
+        }
+
+        public Usuario SelectById(int id)
+        {
+            using (bd = new BD())
+            {
+                var strQuery = string.Format("SELECT * FROM Usuario WHERE UsuarioId = {0}", id);
+                var retorno = bd.ExecutaComandoComRetorno(strQuery);
+                return ListarUsuario(retorno).FirstOrDefault();
             }
         }
 
